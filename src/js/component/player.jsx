@@ -63,6 +63,7 @@ export const Player = props => {
 	return (
 		<Fragment>
 			<h1 className="centering">Arcade audio player</h1>
+			<h2 className="centering">Click any song or play button!</h2>
 			<ul>
 				{songsList.map(eachSong => {
 					return (

@@ -28,14 +28,35 @@ export const Player = props => {
 			});
 	}, []);
 
-	const playStop = () => {
+	const playPause = () => {
 		if (onPlay) {
 			player.pause();
 			setOnPlay(false);
 		} else {
-			player.load();
 			player.play();
 			setOnPlay(true);
+		}
+	};
+
+	const nextSong = () => {
+		for (let index = 0; index < songsList.length; index++) {
+			if (urlAPI.concat(songsList[index].url) == songURL) {
+				setSongURL(urlAPI.concat(songsList[index + 1].url));
+				player.load();
+				player.play();
+				setOnPlay(true);
+			}
+		}
+	};
+
+	const previousSong = () => {
+		for (let index = 0; index < songsList.length; index++) {
+			if (urlAPI.concat(songsList[index].url) == songURL) {
+				setSongURL(urlAPI.concat(songsList[index - 1].url));
+				player.load();
+				player.play();
+				setOnPlay(true);
+			}
 		}
 	};
 
@@ -58,6 +79,32 @@ export const Player = props => {
 					);
 				})}
 			</ul>
+			<div>
+				<button
+					onClick={() => {
+						previousSong();
+					}}>
+					<i className="fa fa-backward" />
+				</button>
+				<button
+					onClick={() => {
+						playPause();
+					}}>
+					<i className="fa fa-pause" />
+				</button>
+				<button
+					onClick={() => {
+						playPause();
+					}}>
+					<i className="fa fa-play" />
+				</button>
+				<button
+					onClick={() => {
+						nextSong();
+					}}>
+					<i className="fa fa-forward" />
+				</button>
+			</div>
 			<audio id="player">
 				<source src={songURL} type="audio/mpeg" />
 			</audio>

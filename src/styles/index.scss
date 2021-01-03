@@ -1,27 +1,33 @@
 @import "~bootstrap/scss/bootstrap.scss";
 @import url('https://fonts.googleapis.com/css2?family=Audiowide&family=Orbitron&family=Press+Start+2P&display=swap');
 
+$push-color: hsla(10, 90%, 40%, 1);
+$push-size: 80px;
+$bg: #0b0933;
+
 body {
-    background-color: #0c0a38;
-}
-ul {
-    list-style-type: none;
-    padding: 0;
-    padding-top: 1rem;
-    padding-bottom: 2rem;
-    margin: 0;
-    li {
-        padding: 0.2rem;
-        text-transform: capitalize;
-        // font-family: 'Orbitron', sans-serif;
-        // font-family: 'Audiowide', cursive;
-        font-family: 'Press Start 2P', cursive;
-        font-size: 1.25rem;
-    }
+    background-color: #0b0933;
 }
 h1 {
     font-family: 'Press Start 2P', cursive;
     color: #22ff47;
+}
+ul {
+    list-style-type: none;
+    padding: 0;
+    padding-top: 0.8rem;
+    // padding-bottom: 0.8rem;
+    padding-left: 13.5rem;
+    margin: 0;
+    li {
+        padding: 0.2rem;
+        text-transform: capitalize;
+        font-family: 'Press Start 2P', cursive;
+        font-size: 1.20rem;
+    }
+}
+button:focus {
+    outline: none;
 }
 .app {
     display: flex;
@@ -40,4 +46,81 @@ h1 {
 }
 .gray {
     color: rgba(128, 128, 128, 0.795);
+}
+
+[class*="push"] {
+  position: relative;
+  display: inline-block;
+  width: $push-size;
+  height: $push-size;
+  border: 0;
+  margin: 1em;
+  outline: none;
+  background-color: $push-color;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: box-shadow 200ms;
+}
+
+.push--skeuo {
+  box-shadow: 
+    inset 0 $push-size/24 0 lighten($push-color, 5%),
+    inset 0 (-$push-size/24) $push-size/60 darken($push-color, 5%),
+    0 0 $push-size/60 $push-color,
+    inset 0 0 $push-size/30 darken($push-color, 15%),
+    inset 0 0 $push-size/30 transparentize($bg, .5),
+    inset 0 0 $push-size/60 $push-size/12 $push-color,
+    inset 0 (-$push-size/30) $push-size/40 $push-size/10 transparentize($bg, .3),
+    inset 0 0 $push-size/60 $push-size/10 darken($push-color, 20%),
+    inset 0 0 $push-size/60 $push-size/10 transparentize($bg, .3),
+    inset 0 0 $push-size/120 $push-size/9.2 darken($push-color, 50%),
+    inset 0 0 $push-size/120 $push-size/8 transparentize(lighten($push-color, 30%), .3),
+    inset 0 $push-size/20 0 $push-size/8.5 transparentize(lighten($push-color, 15%), .3),
+    inset 0 (-$push-size/20) $push-size/60 $push-size/8.5 transparentize(darken($push-color, 10%), .8),
+    inset 0 0 0 $push-size/5.5 $push-color,
+    inset 0 $push-size/2.5 $push-size/7.5 darken($push-color, 5%),
+    inset 0 0 $push-size/10 $push-size/6 darken($push-color, 10%),
+    0 $push-size/40 $push-size/20 rgba(0, 0, 0, .5);
+
+  &:active,
+  // &:hover,
+  &.is-pushed {
+    box-shadow: 
+      inset 0 $push-size/24 0 lighten($push-color, 5%),
+      inset 0 (-$push-size/24) $push-size/60 darken($push-color, 5%),
+      0 0 $push-size/60 $push-color,
+      inset 0 0 $push-size/30 darken($push-color, 15%),
+      inset 0 0 $push-size/30 transparentize($bg, .5),
+      inset 0 0 $push-size/60 $push-size/12 $push-color,
+      inset 0 (-$push-size/30) $push-size/40 $push-size/10 transparentize($bg, .3),
+      inset 0 0 $push-size/60 $push-size/10 darken($push-color, 20%),
+      inset 0 0 $push-size/60 $push-size/10 transparentize($bg, .3),
+      inset 0 0 $push-size/40 $push-size/8.5 darken($push-color, 40%),
+      inset 0 0 $push-size/120 $push-size/7.5 transparentize(lighten($push-color, 30%), .8),
+      inset 0 $push-size/20 0 28px transparentize(lighten($push-color, 15%), .5),
+      inset 0 (-$push-size/20) $push-size/60 28px transparentize(darken($push-color, 20%), .8),
+      inset 0 0 0 $push-size/5.5 darken($push-color, 3%),
+      inset 0 $push-size/2.5 $push-size/7.5 darken($push-color, 8%),
+      inset 0 0 $push-size/10 $push-size/6 darken($push-color, 15%),
+      0 $push-size/40 $push-size/20 rgba(0, 0, 0, .5);
+    background-color: darken($push-color, 2%);
+
+    &:before {
+      opacity: .5;
+    }
+  }
+
+  &:before {
+    content: '';
+    position: absolute;
+    bottom: $push-size/4.5;
+    left: $push-size/3.6;
+    display: block;
+    width: $push-size/2.2;
+    height: $push-size/3.3;
+    background: transparentize(lighten($push-color, 30%), .8);
+    background: linear-gradient(to top, transparentize(lighten($push-color, 40%), .7) 0%, transparentize($push-color, .9) 100%);
+    border-radius: 40% 40% 60% 60%;
+    transition: opacity 200ms;
+  }
 }

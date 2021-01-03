@@ -63,7 +63,7 @@ export const Player = props => {
 	return (
 		<Fragment>
 			<h1 className="centering">Arcade audio player</h1>
-			<ul className="centering">
+			<ul>
 				{songsList.map(eachSong => {
 					return (
 						<li
@@ -86,24 +86,35 @@ export const Player = props => {
 			</ul>
 			<div className="centering">
 				<button
+					className="push--skeuo"
 					onClick={() => {
 						previousSong();
 					}}>
 					<i className="fa fa-backward" />
 				</button>
 				<button
+					className="push--skeuo"
 					onClick={() => {
 						playPause();
 					}}>
 					<i className="fa fa-pause" />
 				</button>
 				<button
+					className="push--skeuo"
 					onClick={() => {
-						playPause();
+						if (songURL == "") {
+							setSongURL(urlAPI.concat(songsList[0].url));
+							player.load();
+							setOnPlay(true);
+							player.play();
+						} else {
+							playPause();
+						}
 					}}>
 					<i className="fa fa-play" />
 				</button>
 				<button
+					className="push--skeuo"
 					onClick={() => {
 						nextSong();
 					}}>

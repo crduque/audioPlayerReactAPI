@@ -5,7 +5,7 @@ export function Home() {
 	// const [playing, setPlaying] = useState(false);
 	// let mySong = document.querySelector("#0");
 	return (
-		<div className="container">
+		<div className="audio-player">
 			<Player />
 		</div>
 	);

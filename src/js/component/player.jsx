@@ -62,11 +62,16 @@ export const Player = props => {
 
 	return (
 		<Fragment>
-			<h1>Arcade audio player</h1>
-			<ul>
+			<h1 className="centering">Arcade audio player</h1>
+			<ul className="centering">
 				{songsList.map(eachSong => {
 					return (
 						<li
+							className={
+								urlAPI.concat(eachSong.url) == songURL
+									? "yellow"
+									: "gray"
+							}
 							key={eachSong.url}
 							onClick={() => {
 								setSongURL(urlAPI.concat(eachSong.url));
@@ -79,7 +84,7 @@ export const Player = props => {
 					);
 				})}
 			</ul>
-			<div>
+			<div className="centering">
 				<button
 					onClick={() => {
 						previousSong();

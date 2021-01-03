@@ -1,13 +1,43 @@
 @import "~bootstrap/scss/bootstrap.scss";
+@import url('https://fonts.googleapis.com/css2?family=Audiowide&family=Orbitron&family=Press+Start+2P&display=swap');
 
-/* 
-
-    You can write your own styles here...
-    
-    
-    ...Or you can use the import command to include 
-    other sylesheets into your bunde as well, e.j:
-    
-    import 'relative/path/to/stylesheet.scss';
-
-*/
+body {
+    background-color: #0c0a38;
+}
+ul {
+    list-style-type: none;
+    padding: 0;
+    padding-top: 1rem;
+    padding-bottom: 2rem;
+    margin: 0;
+    li {
+        padding: 0.2rem;
+        text-transform: capitalize;
+        // font-family: 'Orbitron', sans-serif;
+        // font-family: 'Audiowide', cursive;
+        font-family: 'Press Start 2P', cursive;
+        font-size: 1.25rem;
+    }
+}
+h1 {
+    font-family: 'Press Start 2P', cursive;
+    color: #22ff47;
+}
+.app {
+    display: flex;
+    justify-content: center;
+}
+.audio-player {
+    display: flex;
+    flex-flow: column;
+}
+.centering {
+    align-self: center;
+    text-align: center;
+}
+.yellow {
+    color: #e2ff49;
+}
+.gray {
+    color: rgba(128, 128, 128, 0.795);
+}

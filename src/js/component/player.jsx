@@ -28,14 +28,14 @@ export const Player = props => {
 			});
 	}, []);
 
-	const playPause = () => {
-		if (onPlay) {
-			player.pause();
-			setOnPlay(false);
-		} else {
-			player.play();
-			setOnPlay(true);
-		}
+	const play = () => {
+		player.play();
+		setOnPlay(true);
+	};
+
+	const pause = () => {
+		player.pause();
+		setOnPlay(false);
 	};
 
 	const nextSong = () => {
@@ -96,7 +96,7 @@ export const Player = props => {
 				<button
 					className="push--skeuo"
 					onClick={() => {
-						playPause();
+						pause();
 					}}>
 					<i className="fa fa-pause" />
 				</button>
@@ -109,7 +109,7 @@ export const Player = props => {
 							setOnPlay(true);
 							player.play();
 						} else {
-							playPause();
+							play();
 						}
 					}}>
 					<i className="fa fa-play" />
